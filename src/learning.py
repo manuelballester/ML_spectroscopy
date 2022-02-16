@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from src.models import * 
 
-class generate():
+class learning():
     def __init__(self, wavelength, transmission, T_substrate, model_n, model_k):
         '''
         Explanation: Tensors

@@ -26,7 +26,7 @@ class generating():
 
         # Bounds for the optical parameters in n (refractive index) and k (extinction coefficient)
         model = models(wavelength = self.wv, T_substrate = self.Ts, \
-                model_n = self.model_n, model_k = self.model_n)
+                model_n = self.model_n, model_k = self.model_k)
 
         bound, initial_point = model.boundaries_nonKK()
         
@@ -43,7 +43,7 @@ class generating():
         # Loop to create the dataset
         torch.manual_seed(0) 
 
-        for i in range(n_sample):
+        for i in range(n_samples):
             p = torch.zeros((7))
             for k in range(n_parameters-1): # Last parameter for wedge is set for 0 so far
                 p[k] = torch.FloatTensor(1).uniform_(bound[k,0].item(), bound[k,1].item())
