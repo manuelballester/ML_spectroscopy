@@ -17,7 +17,7 @@ def load_spectra(type_sample, name_Sample, name_Substrate):
     Note: NIR should go up to 2500 nm. However, because our substrate start to
     absorb around 2100, we need to crop that region
 
-    We will call the function below 'plot_spectra' to plot the original and 
+    We will call the function below 'plot_original_NIR' to plot the original and 
     the cropped spectra
     
     args:
@@ -48,7 +48,7 @@ def load_spectra(type_sample, name_Sample, name_Substrate):
     wv, T, Ts = cropped_spectrum(wv_original, T_original, Ts_original)
     
     # STEP 3. Plot the original and crop spectra
-    plot_spectra(wv_original, wv, T_original, T, Ts_original, Ts)
+    plot_original_NIR(wv_original, wv, T_original, T, Ts_original, Ts)
     
     # STEP 4. Convering from numpy to torch tensors (we return the cropped spectrum)
     T[T<0] = 0  # All values should be non-negative
@@ -79,7 +79,7 @@ def cropped_spectrum(wv_original, T_original, Ts_original):
     return wv, T, Ts
 
 
-def plot_spectra(wv_original, wv, T_original, T, Ts_original, Ts):
+def plot_original_NIR(wv_original, wv, T_original, T, Ts_original, Ts):
     """
     It plots the original spectra (left) and the cropped spectra (right).
     The cropped spectra is in the Near-Infrared (NIR) range 800-2100 nm.

@@ -6,12 +6,11 @@ import torch.nn.functional
 import scipy.optimize
 
 class models():
-    def __init__(self, wavelength, transmission, T_substrate, model_n, model_k):
+    def __init__(self, wavelength, T_substrate, model_n, model_k):
         '''
         Explanation: Tensors
         '''
         self.wv = wavelength    # Vector with the wavelength we used for measure
-        self.T = transmission   # Transmission of whole sample
         self.Ts = T_substrate   # Transmission of substrate alone
         self.model_n = model_n  # Model for Refractive Index n, e.g., 'Cauchy'
         self.model_k = model_k  # Model for Attenuation Coefficient k, e.g., 'Exponential'
