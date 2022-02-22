@@ -67,14 +67,14 @@ def load_spectra(type_sample, name_Sample, name_Substrate):
     # STEP 1. Downloading the sample data for real spectra
     if type_sample == 'real':
         
-        name_Sample = 'data/Real_samples/'+ name_Sample + '.txt'
-        name_Substrate = 'data/Real_samples/'+ name_Substrate + '.txt'
+        file_Sample = 'data/Real_samples/'+ name_Sample + '.txt'
+        file_Substrate = 'data/Real_samples/'+ name_Substrate + '.txt'
 
-        data = np.loadtxt(name_Sample)             # Sample data
+        data = np.loadtxt(file_Sample)             # Sample data
         wv_original = np.round(np.flip(data[:,0])) # Wavelength (in nm)
         T_original = np.flip(data[:,1])/100        # Sample transmittance (range 0-1)
 
-        data_s = np.loadtxt(name_Substrate)        # Substrate alone data
+        data_s = np.loadtxt(file_Substrate)        # Substrate alone data
         Ts_original = np.flip(data_s[:,1])/100     # Substrate transmittance (range 0-1)
     
     # STEP 2. From original data to the cropped spectrum (800-2100 nm only)
@@ -148,5 +148,4 @@ def plot_original_NIR(wv_original, wv, T_original, T, Ts_original, Ts):
 
     plt.ion()
     plt.ioff()
-
 
