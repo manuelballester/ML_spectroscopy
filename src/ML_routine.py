@@ -101,7 +101,7 @@ def testing(wv, test_loader, model, prediction_sample):
                   # Saving accuracy in the list
                   list_acc = torch.cat((list_acc, acc), 0)
 
-            total_acc = torch.sum(list_acc)/num
+            total_acc = torch.mean(list_acc)
             print(f'Accuracy of the network on the test spectra: {total_acc} %')
 
       # To plot the values, we need to remove the batch and channel X[0,0]
