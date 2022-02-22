@@ -18,12 +18,14 @@ def visualize(wv, input, output, sample):
     ax1.plot(wv, input[sample], 'b')
     ax1.set_xlabel('Wavelength (nm)')
     ax1.set_ylabel('Transmittance')
+    ax1.set_ylim(0,1)
 
     ax2.title.set_text('Output: Envelope')
     ax2.plot(wv, input[sample], 'b', linestyle ='dashed', alpha=0.25)
     ax2.plot(wv, output[sample], 'r')
     ax2.set_xlabel('Wavelength (nm)')
     ax2.set_ylabel('Transmittance')
+    ax2.set_ylim(0,1)
     plt.tight_layout()
 
 
@@ -138,6 +140,7 @@ def plot_original_NIR(wv_original, wv, T_original, T, Ts_original, Ts):
     ax[0].set_title("Original spectrum")
     ax[0].set_xlabel('Wavelength (nm)')
     ax[0].set_ylabel('Transmittance')
+    ax[0].set_ylim(0,1)
 
 
     ax[1].plot(wv, T)
@@ -145,6 +148,7 @@ def plot_original_NIR(wv_original, wv, T_original, T, Ts_original, Ts):
     ax[1].set_title("NIR cropped spectrum")
     ax[1].set_xlabel('Wavelength (nm)')
     ax[1].set_ylabel('Transmittance')
+    ax[1].set_ylim(0,1)
 
     plt.ion()
     plt.ioff()

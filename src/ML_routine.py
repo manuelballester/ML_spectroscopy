@@ -113,6 +113,7 @@ def testing(wv, test_loader, model, prediction_sample):
       plt.plot(wv, y_predicted[N,0,:], label = 'CNN envelope')
       plt.xlabel('Wavelength (nm)')
       plt.ylabel('Transmittance')
+      plt.ylim(0,1)
       plt.legend()
       plt.savefig(name, dpi = 200)
       plt.show()
