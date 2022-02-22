@@ -8,6 +8,39 @@ import matplotlib.pyplot as plt
 
 savedir = 'output/'
 
+def visualize(wv, input, output, sample):
+    '''
+    Description
+    '''
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+
+    ax1.title.set_text('Input: Spectrum')
+    ax1.plot(wv, input[sample], 'b')
+    ax1.set_xlabel('Wavelength (nm)')
+    ax1.set_ylabel('Transmittance')
+
+    ax2.title.set_text('Output: Envelope')
+    ax2.plot(wv, input[sample], 'b', linestyle ='dashed', alpha=0.25)
+    ax2.plot(wv, output[sample], 'r')
+    ax2.set_xlabel('Wavelength (nm)')
+    ax2.set_ylabel('Transmittance')
+    plt.tight_layout()
+
+
+
+def save_fig_as_png(figtitle):
+    '''
+    Saves the current figure into the output folder
+    The figtitle should not contain the ".png".
+    '''
+
+    fig = plt.gcf()
+    path = savedir+figtitle+".png"
+    print(path)
+    fig.savefig(path, dpi = 300)
+
+
+
 def load_spectra(type_sample, name_Sample, name_Substrate):
     '''
     Load the spectra from a txt file. This file must have a first colum with the
@@ -117,15 +150,3 @@ def plot_original_NIR(wv_original, wv, T_original, T, Ts_original, Ts):
     plt.ioff()
 
 
-def save_fig_as_png(figtitle):
-    '''
-    Saves the current figure into the output folder
-    The figtitle should not contain the ".png".
-    '''
-
-    fig = plt.gcf()
-    path = savedir+figtitle+".png"
-    print(path)
-    fig.savefig(path,bbox_inches='tight', pad_inches=0)
-
-    return 0
